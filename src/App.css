@@ -1,0 +1,161 @@
+:root {
+  /* Theme colors */
+  --bg: #1f1f2e;
+  --fg: #e0e0e0;
+  --btn-bg: #2a2a44;
+  --btn-hover: #030308;
+  --shadow: rgba(0, 0, 0, 0.4);
+  --clear: #ff5252;
+  --delete: #ffb74d;
+  --evaluate: #66bb6a;
+  --operator: #42a5f5;
+
+  /* Sizing */
+  --radius: 0.5rem;
+  --gap: 0.75rem;
+  --btn-size: 4.25rem;
+  --transition: 0.2s ease;
+
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  color: var(--fg);
+  background-color: var(--bg);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #30302f;
+    --fg: #1f1f1f;
+    --btn-bg: #ffffff92;
+    --btn-hover: #e0e0e3;
+    --shadow: rgba(0, 0, 0, 0.1);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+
+/* Calculator container */
+.calculator-grid {
+  display: grid;
+  grid-template-columns: repeat(4, var(--btn-size));
+  grid-template-rows: minmax(10vh, auto) repeat(5, var(--btn-size));
+  gap: var(--gap);
+  padding: var(--gap);
+  background: var(--btn-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+/* Display panel */
+.output {
+  grid-column: 1/ -1;
+  grid-template-rows: minmax(var(20rem), auto) repeat(5, var(--btn-size));
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  word-break: break-all;
+}
+
+.output .prev-op {
+  font-size: 1.2rem;
+  opacity: 0.6;
+  margin-bottom: auto;
+}
+
+.output .curr-op {
+  font-size: 2.75rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+/* Base button */
+.calculator-grid button {
+  background: var(--btn-bg);
+  color: var(--fg);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+/* Hover & active */
+.calculator-grid button:hover {
+  background: whitesmoke;
+}
+
+.calculator-grid button:active {
+  transform: scale(0.95);
+  box-shadow: inset 0 4px 8px var(--shadow);
+}
+
+/* Span two columns */
+.span-two {
+  grid-column: span 2;
+}
+
+/* Clear button */
+button[data-action="clear"] {
+  background: var(--clear);
+  color: #fff;
+}
+
+button[data-action="clear"]:hover {
+  background: #812222;
+}
+
+/* Delete button */
+button[data-action="delete"] {
+  background: var(--delete);
+  color: #1f1f1f;
+}
+
+button[data-action="delete"]:hover {
+  background: #c17630;
+}
+
+/* Evaluate (=) button */
+button[data-action="evaluate"] {
+  background: var(--evaluate);
+  color: #fff;
+}
+
+button[data-action="evaluate"]:hover {
+  background: #57a05e;
+}
+
+/* Operator buttons */
+button[data-action="operator"] {
+  background: var(--operator);
+  color: #fff;
+}
+
+button[data-action="operator"]:hover {
+  background: #0661a7;
+}
+
+/* Utility links */
+a {
+  color: var(--operator);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  color: #1976d2;
+}

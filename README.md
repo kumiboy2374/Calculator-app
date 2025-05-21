@@ -14,7 +14,7 @@ Welcome to my first React project! This simple calculator app demonstrates the b
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/calculator-app.git
+   git clone https://github.com/kumiboy2374/Calculator-app.git
    cd calculator-app
    ```
 2. **Install dependencies**
